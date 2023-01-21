@@ -43,6 +43,6 @@ To verify a signed file in this app, choose one of folders into signatures folde
 <div align="center">
   <img align="left" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/signing-digitalSignatureApp.png" height="270" width="345" />
 
-  <img align="right" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/verifySignature-digitalSignatureApp.png" height="288" width="480" />
+  <img align="right" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/verifySignature-digitalSignatureApp.png" height="288" width="280" />
 
 </div>
