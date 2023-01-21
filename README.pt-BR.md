@@ -36,13 +36,12 @@ A cada assinatura, são criados 3 arquivos para seguir as especificações do tr
   - signature.base64 - Assinatura digital
   - USED_SHA.txt - Arquivo de texto com a versão SHA usada para fazer o hash da mensagem na assinatura.
 
-Para verificar um arquivo assinado neste aplicativo, escolha uma das pastas na pasta 'signatures' para colocar no programa na etapa 'Signature file name'
+Para verificar um arquivo assinado neste aplicativo, escolha uma das pastas na pasta 'signatures' para colocar no programa na etapa 'Signature folder name'
 
 ## 🖼️ Imagens
 
 <div align="center">
-  <img align="left" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/signing-digitalSignatureApp.png" height="290" width="398" />
+  <img align="left" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/signing-digitalSignatureApp.png" height="240" width="330" />
 
-  <img align="" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/verifySignature-digitalSignatureApp.png" height="308" width="533" />
-
+  <img align="right" src="https://gist.githubusercontent.com/CassianoJunior/6d6630ae3b81c9912f79b70c93bc776c/raw/17015854b5487ff0cef20acb1cdcec691b8dd143/verifySignature-digitalSignatureApp.png" height="278" width="460" />
 </div>
