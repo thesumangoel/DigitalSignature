@@ -8,9 +8,14 @@ from Crypto.Signature.pkcs1_15 import PKCS115_SigScheme
 
 def assign(message, key, hash):
   hashObject = hash[0].new(message)
-  digitalSignature = PKCS115_SigScheme(key).sign(hashObject)
+  hashHexadecimal = hashObject.hexdigest().encode('UTF-8')
+
+  hashOfHashHex = hash[0].new(hashHexadecimal)
+  digitalSignature = PKCS115_SigScheme(key).sign(hashOfHashHex)
 
   now = datetime.now().strftime("%Y%m%d%H%M%S")
+
+  if not os.path.exists('signatures'): os.mkdir('signatures')
 
   os.mkdir(f'signatures/signature_{now}')
   
@@ -29,12 +34,15 @@ def assign(message, key, hash):
 
 def verify(message, digitalSignature, key, hash):
   hashObject = hash.new(message)
+  hashHexadecimal = hashObject.hexdigest().encode('UTF-8')
+
+  hashOfHashHex = hash.new(hashHexadecimal)
   digitalSignature = b64decode(digitalSignature)
   key = RSA.import_key(b64decode(key))
   verifier = PKCS115_SigScheme(key)
 
   try:
-    verifier.verify(hashObject, digitalSignature)
+    verifier.verify(hashOfHashHex, digitalSignature)
     return True
   except:
     return False

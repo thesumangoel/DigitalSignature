@@ -19,40 +19,62 @@ if __name__ == '__main__':
     if option == 1:
       hashAlgorithm = choosenHashAlgorithm()
 
-      filename = input('Plaintext filename > ')
+      fileName = input('Plaintext file name > ')
+      try:
+        with open(fileName, 'r') as file:
+          message = file.read().encode('UTF-8')
+          file.close()
+      except FileNotFoundError:
+        print('File not found.')
+        continue
 
-      generateKeys()
-      private = importKeys()
-
-      with open(filename, 'r') as file:
-        message = file.read().encode('UTF-8')
-        file.close()  
+      while True:
+        hasKey = input('Do you have a key? (y/n) > ')
+        if hasKey == 'y':
+          try:
+            private = importKeys()
+          except FileNotFoundError:
+            print('Key not found. Generating a new one.')
+            private = generateKeys()
+          break
+        elif hasKey == 'n':
+          private = generateKeys()
+          break
+        else:
+          print('Invalid option.')
+          continue 
 
       digitalSignature, publicKey = assign(message, private, hashAlgorithm)
-      print('File signed. Verify created files in signatures folder.')
+      print('\nFile signed. Verify created files in signatures folder.\n')
     elif option == 2:
-      filename = input('Plaintext filename > ')
+      fileName = input('Plain text file name > ')
 
-      with open(filename, 'r') as file:
-        message = file.read().encode('UTF-8')
-        file.close()
+      try:
+        with open(fileName, 'r') as file:
+          message = file.read().encode('UTF-8')
+          file.close()
+      except FileNotFoundError:
+        print('Plain text file not found.')
+        continue
 
-      foldername = input('Signature folder name > ')
+      folderName = input('Signature folder name > ')
+      try:
+        with open(f'signatures/{folderName}/signature.base64', 'rb') as file:
+          digitalSignature = file.read()
+          file.close()
+        with open(f'signatures/{folderName}/publicKey.base64', 'rb') as file:
+          publicKey = file.read()
+          file.close()
+      except FileNotFoundError:
+        print('Folder not found.')
+        continue
 
-      hashAlgorithm = getHashUsed(foldername)
-
-      with open(f'signatures/{foldername}/signature.base64', 'rb') as file:
-        digitalSignature = file.read()
-        file.close()
-      
-      with open(f'signatures/{foldername}/publicKey.base64', 'rb') as file:
-        publicKey = file.read()
-        file.close()
+      hashAlgorithm = getHashUsed(folderName)
 
       if verify(message, digitalSignature, publicKey, hashAlgorithm):
-        print(f'{BOLD + GREEN}The message is authentic.{RESET}')
+        print(f'{GREEN}\nThe message is authentic.{RESET}\n')
       else:
-        print(f'{BOLD + RED}The message is not authentic.{RESET}')
+        print(f'{RED}\nThe message is not authentic.{RESET}\n')
     else:
       print('Invalid option.')
 
