@@ -19,7 +19,7 @@
 ## ⏬ Downloading project
 After installing the requirements, clone the repository using the command below:
 ```
-  git clone https://github.com/CassianoJunior/DigitalSignature ./DigitalSignature
+  git clone https://github.com/thesumangoel/DigitalSignature ./DigitalSignature
 ```
 
 # 📱 How to use
